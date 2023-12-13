@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: center;" onload="getPlayer();">
+    <H2>Tic- Tac-Toe</H2> <br>
+    <h3 id="first" style="font-weight: bold;"> Hello</h3>
+    <div style="display: flex; flex-direction: column;">
+
+        <table style="width: 60%;height: 200px; margin-left: 18%;">
+            <tbody id="butto" style="background-color: aqua; margin: 1px;">
+                <tr>
+                    <td id="td1"><input type="button" class="button" onclick="myFun('td1');"></td>
+                    <td id="td2"><input type="button" class="button" onclick="myFun('td2');"></td>
+                    <td id="td3"><input type="button" class="button" onclick="myFun('td3');"></td>
+                </tr>
+                <tr>
+                    <td id="td4"><input type="button" class="button" onclick="myFun('td4');"></td>
+                    <td id="td5"><input type="button" class="button" onclick="myFun('td5');"></td>
+                    <td id="td6"><input type="button" class="button" onclick="myFun('td6');"></td>
+                </tr>
+                <tr>
+                    <td id="td7"><input type="button" class="button" onclick="myFun('td7');"></td>
+                    <td id="td8"><input type="button" class="button" onclick="myFun('td8');"></td>
+                    <td id="td9"><input type="button" class="button" onclick="myFun('td9');"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p id="current" style="font-weight: bold;"></p>
+    </div>  
+    <h2 id="win" style="font-weight: bold;"></h2>
+    <script>
+        let arr = {td1: "1", td2: "2", td3: "3", td4: "4", td5: "5", td6: "6", td7: "7", td8: "8", td9: "9"}
+        arr1 = ['td1' ,'td2', 'td3','td4' ,'td5', 'td6','td7' ,'td8', 'td9']
+     
+        function myFun(td){
+            
+            if (window.name == 'X'){
+                arr[td] = name;
+                document.getElementById(td).innerHTML="X";
+                win();
+            }
+            else {
+                arr[td]= name;
+                document.getElementById(td).innerHTML="O";
+                win();
+            }
+            player();
+            
+        }
+
+        function player(){
+            if (window.name == 'X'){
+                document.getElementById("current").innerHTML = "Its Turn Player: " + 'O';
+                window.name = 'O';
+            }
+            else if (window.name == 'O'){
+                document.getElementById("current").innerHTML = "Its Turn Player: " + 'X';
+                window.name = 'X';
+            }
+            else{
+                document.getElementById("current").innerHTML = "Its Turn Player: " + 'X';
+                window.name = 'X';
+            }
+
+        }
+
+        function win(){
+            let count = 0;
+            var a = '';
+            if ((arr.td1 == arr.td2) && (arr.td2 ==  arr.td3)) {
+                a = document.getElementById("win").innerHTML = arr.td1 + " Win";
+                count++;
+            }
+            else if ((arr.td4 == arr.td5) && (arr.td5 ==  arr.td6)){
+                a = document.getElementById("win").innerHTML = arr.td4 + " Win";
+                count++;
+            }
+            else if ((arr.td7 == arr.td8) && (arr.td8 ==  arr.td9)){
+                a = document.getElementById("win").innerHTML = arr.td7 + " Win";
+                count++;
+            }
+            else if ((arr.td1 == arr.td4) && (arr.td4 ==  arr.td7)){
+                a = document.getElementById("win").innerHTML = arr.td1 + " Win";
+                count++;
+            }
+            else if ((arr.td2 == arr.td5) && (arr.td5 ==  arr.td8)){
+                a = document.getElementById("win").innerHTML = arr.td2 + " Win";
+                count++;
+            }
+            else if ((arr.td3 == arr.td6) && (arr.td6 ==  arr.td9)){
+                a = document.getElementById("win").innerHTML = arr.td3 + " Win";
+                count++;
+            }
+            else if ((arr.td1 == arr.td5) && (arr.td5 ==  arr.td9)){
+                a = document.getElementById("win").innerHTML = arr.td1 + " Win";
+                count++;
+            }
+            else if ((arr.td3 == arr.td5) && (arr.td5 ==  arr.td7)){
+                a = document.getElementById("win").innerHTML = arr.td3 + " Win";
+                count++;
+            }
+            else{
+            
+                document.getElementById("win").innerHTML = '';
+            }
+
+            if(count !=0){
+                close(a);
+            }
+
+            if ((document.getElementsByClassName("button").length == 0)&&(count==0)){
+                document.getElementById("win").innerHTML = 'Game Draw';
+            }
+        }
+
+        function getPlayer(){
+            if (window.name == ''){
+                document.getElementById("first").innerHTML = "First Player Was : " + 'X';
+                window.name = 'X';
+            }
+            else{
+                document.getElementById("first").innerHTML = "First Player Was : " + window.name;
+            }
+        }
+
+        function close(a){
+            for(let i = 1; i<=9; i++){
+                document.getElementById(`td${i}`).innerHTML='';
+            }
+        }
+    </script>
+
+    <style>
+        .button{
+            color: aqua;
+            background-color: aqua;
+            width: 100%;
+            height: 100%;
+            /* border: none; */
+        }
+        .butto{
+            background-color: aqua;
+            font-size: 80px;
+            display: grid;
+        }
+        
+    </style>
+</body>
+</html>
